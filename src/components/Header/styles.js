@@ -15,7 +15,7 @@ export const Logo = styled.Image`
 
 export const Cart = styled.View`
   position: relative;
-  width: 30px;
+  padding: 5px;
 `;
 
 export const Amount = styled.Text`
@@ -23,9 +23,6 @@ export const Amount = styled.Text`
   top: 0px;
   right: 0px;
   background-color: #7159c1;
-  width: 16px;
-  height: 16px;
-  border-radius: 8px;
   color: #fff;
   font-size: 14px;
   font-weight: bold;
