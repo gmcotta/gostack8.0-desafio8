@@ -2,13 +2,12 @@ import styled from 'styled-components/native';
 import { RectButton } from 'react-native-gesture-handler';
 
 export const Container = styled.View`
-  /*margin-top: 30px;*/
-  border: 1px solid red;
+  /* border: 1px solid red; */
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  background-color: #000;
-  padding: 30px 5px 5px 5px;
+  background-color: #141419;
+  padding: 40px 5px 20px 5px;
 `;
 
 export const LogoButton = styled(RectButton)``;
@@ -28,15 +27,16 @@ export const CartAmount = styled.View`
   right: 0px;
   background-color: #7159c1;
   height: 16px;
+  width: 16px;
   border-radius: 8px;
   z-index: 10;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const AmountText = styled.Text`
   color: #fff;
-  font-size: 14px;
-  font-weight: bold;
-  padding: 0 2px 2px 2px;
+  font-size: 10px;
 `;
 
 export const Teste = styled(RectButton)``;

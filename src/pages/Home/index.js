@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import api from '../../services/api';
 import { formatPrice } from '../../util/format';
+import * as CartActions from '../../store/modules/cart/actions';
 
 import {
   Container,
@@ -18,6 +20,7 @@ import {
   AddButtonText,
   Teste,
 } from './styles';
+import Cart from '../Cart';
 
 class Home extends Component {
   state = {
@@ -38,11 +41,8 @@ class Home extends Component {
   }
 
   handleCartNavigation = product => {
-    const { navigation, dispatch } = this.props;
-    dispatch({
-      type: 'ADD_TO_CART',
-      product,
-    });
+    const { navigation, addToCart } = this.props;
+    addToCart(product);
     // navigation.navigate('Cart');
   };
 
@@ -78,4 +78,10 @@ class Home extends Component {
   }
 }
 
-export default connect()(Home);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(CartActions, dispatch);
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(Home);

@@ -1,6 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { FlatList } from 'react-native';
+import { bindActionCreators } from 'redux';
+
+import * as CartActions from '../../store/modules/cart/actions';
+
 import {
   Container,
   ProductItem,
@@ -25,7 +28,7 @@ import {
   ButtonText,
 } from './styles';
 
-function Cart({ cart, dispatch }) {
+function Cart({ cart, removeFromCart }) {
   // console.tron.log(cart);
   return (
     <Container>
@@ -45,11 +48,7 @@ function Cart({ cart, dispatch }) {
                   <ProductTitle>{item.title}</ProductTitle>
                   <ProductPrice>{item.priceFormatted}</ProductPrice>
                 </ProductDescription>
-                <DeleteButton
-                  onPress={() =>
-                    dispatch({ type: 'REMOVE_FROM_CART', id: item.id })
-                  }
-                >
+                <DeleteButton onPress={() => removeFromCart(item.id)}>
                   <DeleteIcon />
                 </DeleteButton>
               </ProductItem>
@@ -80,4 +79,10 @@ const mapStateToProps = state => ({
   cart: state.cart,
 });
 
-export default connect(mapStateToProps)(Cart);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(CartActions, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Cart);
