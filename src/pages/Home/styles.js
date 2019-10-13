@@ -1,17 +1,24 @@
 import styled from 'styled-components/native';
+import { RectButton } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 export const Container = styled.View`
   background-color: #191920;
-  height: 100%;
-  padding: 20px;
+  flex: 1;
 `;
+
+export const List = styled.FlatList.attrs({
+  horizontal: true,
+  showsHorizontalScrollIndicator: false,
+})``;
 
 export const Product = styled.View`
   background-color: #fff;
+  max-height: 400px;
   width: 220px;
   border-radius: 4px;
   padding: 10px;
+  margin: 10px;
 `;
 export const Image = styled.Image`
   width: 200px;
@@ -29,7 +36,7 @@ export const Price = styled.Text`
   padding: 10px;
 `;
 
-export const AddButton = styled.View`
+export const AddButton = styled(RectButton)`
   flex-direction: row;
   border-radius: 4px;
   flex-direction: row;
@@ -59,6 +66,7 @@ export const AddButtonAmount = styled.Text`
 export const AddButtonText = styled.Text`
   flex: 1;
   text-align: center;
+  text-transform: uppercase;
   font-weight: bold;
   color: #fff;
 `;

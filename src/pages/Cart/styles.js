@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import { RectButton } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 export const Container = styled.View`
@@ -96,7 +97,7 @@ export const TotalPrice = styled.Text`
   padding: 10px;
 `;
 
-export const ConfirmButton = styled.View`
+export const ConfirmButton = styled(RectButton)`
   background-color: #7159c1;
   border-radius: 4px;
   flex-direction: row;
