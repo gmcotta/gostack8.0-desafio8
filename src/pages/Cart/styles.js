@@ -5,14 +5,19 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 export const Container = styled.View`
   background-color: #191920;
   height: 100%;
-  padding: 20px;
 `;
 
 export const Product = styled.View`
+  margin: 20px 20px 40px 20px;
   background-color: #fff;
   padding: 20px;
   border-radius: 4px;
+  flex: 1;
 `;
+
+export const List = styled.FlatList.attrs({
+  showsVerticalScrollIndicator: false,
+})``;
 
 export const ProductItem = styled.View`
   flex-direction: row;
