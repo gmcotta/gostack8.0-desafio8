@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+import { formatPrice } from '../../util/format';
+
 import * as CartActions from '../../store/modules/cart/actions';
 
 import {
@@ -30,7 +32,7 @@ import {
   ButtonText,
 } from './styles';
 
-function Cart({ cart, removeFromCart, updateAmount }) {
+function Cart({ cart, total, removeFromCart, updateAmount }) {
   // console.tron.log(cart);
 
   function decrement(product) {
@@ -73,14 +75,14 @@ function Cart({ cart, removeFromCart, updateAmount }) {
                     <IncreaseIcon />
                   </IncreaseButton>
                 </Item>
-                <Subtotal>R$ 539,70</Subtotal>
+                <Subtotal>{item.subTotal}</Subtotal>
               </ProductBar>
             </>
           )}
         />
         <Total>
           <TotalText>TOTAL</TotalText>
-          <TotalPrice>R$ 1619,10</TotalPrice>
+          <TotalPrice>{total}</TotalPrice>
         </Total>
         <ConfirmButton>
           <ButtonText>FINALIZAR PEDIDO</ButtonText>
@@ -91,7 +93,15 @@ function Cart({ cart, removeFromCart, updateAmount }) {
 }
 
 const mapStateToProps = state => ({
-  cart: state.cart,
+  cart: state.cart.map(product => ({
+    ...product,
+    subTotal: formatPrice(product.amount * product.price),
+  })),
+  total: formatPrice(
+    state.cart.reduce((total, product) => {
+      return total + product.amount * product.price;
+    }, 0)
+  ),
 });
 
 const mapDispatchToProps = dispatch =>
