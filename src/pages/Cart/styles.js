@@ -12,7 +12,7 @@ export const Product = styled.View`
   background-color: #fff;
   padding: 20px;
   border-radius: 4px;
-  flex: 1;
+  max-height: 650px;
 `;
 
 export const List = styled.FlatList.attrs({
