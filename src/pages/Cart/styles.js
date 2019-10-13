@@ -66,6 +66,8 @@ export const Item = styled.View`
   align-items: center;
 `;
 
+export const DecreaseButton = styled(RectButton)``;
+
 export const DecreaseIcon = styled(Icon).attrs({
   name: 'remove-circle-outline',
   size: 20,
@@ -79,6 +81,8 @@ export const ProductAmount = styled.TextInput.attrs({
   padding: 5px 10px;
   margin: 0 10px;
 `;
+
+export const IncreaseButton = styled(RectButton)``;
 
 export const IncreaseIcon = styled(Icon).attrs({
   name: 'add-circle-outline',

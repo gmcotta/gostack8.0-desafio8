@@ -17,8 +17,10 @@ import {
   DeleteIcon,
   ProductBar,
   Item,
+  DecreaseButton,
   DecreaseIcon,
   ProductAmount,
+  IncreaseButton,
   IncreaseIcon,
   Subtotal,
   Total,
@@ -28,8 +30,17 @@ import {
   ButtonText,
 } from './styles';
 
-function Cart({ cart, removeFromCart }) {
+function Cart({ cart, removeFromCart, updateAmount }) {
   // console.tron.log(cart);
+
+  function decrement(product) {
+    updateAmount(product.id, product.amount - 1);
+  }
+
+  function increment(product) {
+    updateAmount(product.id, product.amount + 1);
+  }
+
   return (
     <Container>
       <Product>
@@ -54,9 +65,13 @@ function Cart({ cart, removeFromCart }) {
               </ProductItem>
               <ProductBar>
                 <Item>
-                  <DecreaseIcon />
+                  <DecreaseButton onPress={() => decrement(item)}>
+                    <DecreaseIcon />
+                  </DecreaseButton>
                   <ProductAmount>{item.amount}</ProductAmount>
-                  <IncreaseIcon />
+                  <IncreaseButton onPress={() => increment(item)}>
+                    <IncreaseIcon />
+                  </IncreaseButton>
                 </Item>
                 <Subtotal>R$ 539,70</Subtotal>
               </ProductBar>
