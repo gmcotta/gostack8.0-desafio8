@@ -2,12 +2,13 @@ import styled from 'styled-components/native';
 import { RectButton } from 'react-native-gesture-handler';
 
 export const Container = styled.View`
+  /*margin-top: 30px;*/
   border: 1px solid red;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   background-color: #000;
-  padding: 5px;
+  padding: 30px 5px 5px 5px;
 `;
 
 export const LogoButton = styled(RectButton)``;
@@ -18,7 +19,6 @@ export const Logo = styled.Image`
 `;
 
 export const Cart = styled(RectButton)`
-  border: 1px solid red;
   position: relative;
 `;
 

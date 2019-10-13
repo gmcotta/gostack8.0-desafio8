@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import {
@@ -12,9 +13,7 @@ import {
 
 import logo from '../../assets/Logo.png';
 
-export default class Header extends Component {
-  state = {};
-
+function Header({ cartSize }) {
   handleHomeNavigation = () => {
     const { navigation } = this.props;
     navigation.navigate('Home');
@@ -25,19 +24,21 @@ export default class Header extends Component {
     navigation.navigate('Cart');
   };
 
-  render() {
-    return (
-      <Container>
-        <LogoButton onPress={this.handleHomeNavigation}>
-          <Logo source={logo} />
-        </LogoButton>
-        <Cart onPress={this.handleCartNavigation}>
-          <Icon name="shopping-cart" size={26} color="#fff" />
-          <CartAmount>
-            <AmountText>1</AmountText>
-          </CartAmount>
-        </Cart>
-      </Container>
-    );
-  }
+  return (
+    <Container>
+      <LogoButton onPress={this.handleHomeNavigation}>
+        <Logo source={logo} />
+      </LogoButton>
+      <Cart onPress={this.handleCartNavigation}>
+        <Icon name="shopping-cart" size={26} color="#fff" />
+        <CartAmount>
+          <AmountText>{cartSize}</AmountText>
+        </CartAmount>
+      </Cart>
+    </Container>
+  );
 }
+
+export default connect(state => ({
+  cartSize: state.cart.length,
+}))(Header);

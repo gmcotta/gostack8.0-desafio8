@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
-import Header from '../../components/Header';
+import { connect } from 'react-redux';
 
 import api from '../../services/api';
 import { formatPrice } from '../../util/format';
@@ -20,7 +19,7 @@ import {
   Teste,
 } from './styles';
 
-export default class Home extends Component {
+class Home extends Component {
   state = {
     products: [],
   };
@@ -38,10 +37,13 @@ export default class Home extends Component {
     });
   }
 
-  handleCartNavigation = () => {
-    console.tron.log('Oi');
-    const { navigation } = this.props;
-    navigation.navigate('Cart');
+  handleCartNavigation = product => {
+    const { navigation, dispatch } = this.props;
+    dispatch({
+      type: 'ADD_TO_CART',
+      product,
+    });
+    // navigation.navigate('Cart');
   };
 
   render() {
@@ -61,7 +63,7 @@ export default class Home extends Component {
               />
               <Title>{item.title}</Title>
               <Price>{item.priceFormatted}</Price>
-              <AddButton onPress={this.handleCartNavigation}>
+              <AddButton onPress={() => this.handleCartNavigation(item)}>
                 <AddButtonLeft>
                   <AddButtonImage />
                   <AddButtonAmount>1</AddButtonAmount>
@@ -75,3 +77,5 @@ export default class Home extends Component {
     );
   }
 }
+
+export default connect()(Home);
