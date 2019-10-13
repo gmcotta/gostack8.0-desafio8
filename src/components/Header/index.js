@@ -13,23 +13,21 @@ import {
 
 import logo from '../../assets/Logo.png';
 
-function Header({ cartSize }) {
-  handleHomeNavigation = () => {
-    const { navigation } = this.props;
+function Header({ navigation, cartSize }) {
+  function handleHomeNavigation() {
     navigation.navigate('Home');
-  };
+  }
 
-  handleCartNavigation = () => {
-    const { navigation } = this.props;
+  function handleCartNavigation() {
     navigation.navigate('Cart');
-  };
+  }
 
   return (
     <Container>
-      <LogoButton onPress={this.handleHomeNavigation}>
+      <LogoButton onPress={() => handleHomeNavigation()}>
         <Logo source={logo} />
       </LogoButton>
-      <Cart onPress={this.handleCartNavigation}>
+      <Cart onPress={() => handleCartNavigation()}>
         <Icon name="shopping-cart" size={26} color="#fff" />
         <CartAmount>
           <AmountText>{cartSize}</AmountText>
