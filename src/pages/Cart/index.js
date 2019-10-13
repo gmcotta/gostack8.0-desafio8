@@ -10,6 +10,7 @@ import {
   ProductDescription,
   ProductTitle,
   ProductPrice,
+  DeleteButton,
   DeleteIcon,
   ProductBar,
   Item,
@@ -24,8 +25,8 @@ import {
   ButtonText,
 } from './styles';
 
-function Cart({ cart }) {
-  console.tron.log(cart);
+function Cart({ cart, dispatch }) {
+  // console.tron.log(cart);
   return (
     <Container>
       <Product>
@@ -44,7 +45,13 @@ function Cart({ cart }) {
                   <ProductTitle>{item.title}</ProductTitle>
                   <ProductPrice>{item.priceFormatted}</ProductPrice>
                 </ProductDescription>
-                <DeleteIcon />
+                <DeleteButton
+                  onPress={() =>
+                    dispatch({ type: 'REMOVE_FROM_CART', id: item.id })
+                  }
+                >
+                  <DeleteIcon />
+                </DeleteButton>
               </ProductItem>
               <ProductBar>
                 <Item>

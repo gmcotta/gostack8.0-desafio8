@@ -13,8 +13,8 @@ const enhancer = __DEV__
     )
   : applyMiddleware(sagaMiddleware);
 */
-// const enhancer = __DEV__ ? console.tron.createEnhancer() : null;
+const enhancer = __DEV__ ? console.tron.createEnhancer() : null;
 
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, enhancer);
 
 export default store;

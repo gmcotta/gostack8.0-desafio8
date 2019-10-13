@@ -44,6 +44,8 @@ export const ProductPrice = styled.Text`
   margin-top: 10px;
 `;
 
+export const DeleteButton = styled(RectButton)``;
+
 export const DeleteIcon = styled(Icon).attrs({
   name: 'delete-forever',
   size: 24,
