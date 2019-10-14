@@ -5,11 +5,11 @@ import rootReducer from './modules/rootReducer';
 import rootSaga from './modules/rootSaga';
 
 const sagaMonitor = __DEV__ ? console.tron.createSagaMonitor() : null;
-const sagaMiddleware = createSagaMiddleware({ sagaMonitor });
+const sagaMiddleware = createSagaMiddleware();
 
 const enhancer = __DEV__
   ? compose(
-      console.tron.createEnhancer(),
+      console.tron.createEnhancer({ sagaMonitor }),
       applyMiddleware(sagaMiddleware)
     )
   : applyMiddleware(sagaMiddleware);

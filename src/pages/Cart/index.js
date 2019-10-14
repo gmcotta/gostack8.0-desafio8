@@ -30,11 +30,12 @@ import {
   TotalPrice,
   ConfirmButton,
   ButtonText,
+  NoProductContainer,
+  NoProductIcon,
+  NoProductText,
 } from './styles';
 
 function Cart({ cart, total, removeFromCart, updateAmountRequest }) {
-  // console.tron.log(cart);
-
   function decrement(product) {
     updateAmountRequest(product.id, product.amount - 1);
   }
@@ -80,7 +81,7 @@ function Cart({ cart, total, removeFromCart, updateAmountRequest }) {
             </>
           )}
         />
-        {cart.amount > 0 ? (
+        {cart.length ? (
           <>
             <Total>
               <TotalText>TOTAL</TotalText>
@@ -91,7 +92,10 @@ function Cart({ cart, total, removeFromCart, updateAmountRequest }) {
             </ConfirmButton>
           </>
         ) : (
-          <></>
+          <NoProductContainer>
+            <NoProductIcon />
+            <NoProductText>Seu carrinho está vazio</NoProductText>
+          </NoProductContainer>
         )}
       </Product>
     </Container>

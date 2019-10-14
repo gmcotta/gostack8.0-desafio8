@@ -121,3 +121,19 @@ export const ButtonText = styled.Text`
   color: #fff;
   padding: 15px;
 `;
+
+export const NoProductContainer = styled.View`
+  align-items: center;
+`;
+export const NoProductIcon = styled(Icon).attrs({
+  name: 'remove-shopping-cart',
+  size: 80,
+  color: '#eee',
+})`
+  padding: 10px;
+`;
+export const NoProductText = styled.Text`
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+`;
