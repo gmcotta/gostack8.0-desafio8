@@ -7,7 +7,7 @@ export const Container = styled.View`
   align-items: center;
   justify-content: space-between;
   background-color: #141419;
-  padding: 40px 5px 20px 5px;
+  padding: 40px 10px 20px 10px;
 `;
 
 export const LogoButton = styled(RectButton)``;

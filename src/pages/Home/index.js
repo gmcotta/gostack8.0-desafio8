@@ -18,7 +18,6 @@ import {
   AddButtonImage,
   AddButtonAmount,
   AddButtonText,
-  Teste,
 } from './styles';
 import Cart from '../Cart';
 
@@ -40,9 +39,9 @@ class Home extends Component {
     });
   }
 
-  handleCartNavigation = product => {
-    const { navigation, addToCart } = this.props;
-    addToCart(product);
+  handleCartNavigation = id => {
+    const { navigation, addToCartRequest } = this.props;
+    addToCartRequest(id);
     // navigation.navigate('Cart');
   };
 
@@ -64,7 +63,7 @@ class Home extends Component {
               />
               <Title>{item.title}</Title>
               <Price>{item.priceFormatted}</Price>
-              <AddButton onPress={() => this.handleCartNavigation(item)}>
+              <AddButton onPress={() => this.handleCartNavigation(item.id)}>
                 <AddButtonLeft>
                   <AddButtonImage />
                   <AddButtonAmount>{amount[item.id] || 0}</AddButtonAmount>
