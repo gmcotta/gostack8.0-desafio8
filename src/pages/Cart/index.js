@@ -80,13 +80,19 @@ function Cart({ cart, total, removeFromCart, updateAmountRequest }) {
             </>
           )}
         />
-        <Total>
-          <TotalText>TOTAL</TotalText>
-          <TotalPrice>{total}</TotalPrice>
-        </Total>
-        <ConfirmButton>
-          <ButtonText>FINALIZAR PEDIDO</ButtonText>
-        </ConfirmButton>
+        {cart.amount > 0 ? (
+          <>
+            <Total>
+              <TotalText>TOTAL</TotalText>
+              <TotalPrice>{total}</TotalPrice>
+            </Total>
+            <ConfirmButton>
+              <ButtonText>FINALIZAR PEDIDO</ButtonText>
+            </ConfirmButton>
+          </>
+        ) : (
+          <></>
+        )}
       </Product>
     </Container>
   );
