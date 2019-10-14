@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+import PropTypes from 'prop-types';
 import { formatPrice } from '../../util/format';
 
 import * as CartActions from '../../store/modules/cart/actions';
@@ -113,6 +114,13 @@ const mapStateToProps = state => ({
     }, 0)
   ),
 });
+
+Cart.propTypes = {
+  cart: PropTypes.element.isRequired,
+  total: PropTypes.element.isRequired,
+  removeFromCart: PropTypes.func.isRequired,
+  updateAmountRequest: PropTypes.func.isRequired,
+};
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(CartActions, dispatch);

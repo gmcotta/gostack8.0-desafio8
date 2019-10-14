@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+import PropTypes from 'prop-types';
+
 import api from '../../services/api';
 import { formatPrice } from '../../util/format';
 import * as CartActions from '../../store/modules/cart/actions';
@@ -19,7 +21,6 @@ import {
   AddButtonAmount,
   AddButtonText,
 } from './styles';
-import Cart from '../Cart';
 
 class Home extends Component {
   state = {
@@ -76,6 +77,11 @@ class Home extends Component {
     );
   }
 }
+
+Home.propTypes = {
+  addToCartRequest: PropTypes.func.isRequired,
+  amount: PropTypes.element.isRequired,
+};
 
 const mapStateToProps = state => ({
   amount: state.cart.reduce((amount, product) => {
