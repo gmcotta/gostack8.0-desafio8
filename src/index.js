@@ -10,7 +10,7 @@ import './config/ReactotronConfig';
 export default function App() {
   return (
     <Provider store={store}>
-      <StatusBar barStyle="light-content" backgroundColor="#000" />
+      <StatusBar barStyle="light-content" backgroundColor="#141419" />
       <Routes
         ref={navigatorRef =>
           NavigationService.setTopLevelNavigator(navigatorRef)

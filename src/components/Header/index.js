@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import PropTypes from 'prop-types';
 
+import { SafeAreaView } from 'react-navigation';
 import {
   Container,
   LogoButton,
@@ -25,17 +26,28 @@ function Header({ navigation, cartSize }) {
   }
 
   return (
-    <Container>
-      <LogoButton onPress={() => handleHomeNavigation()}>
-        <Logo source={logo} />
-      </LogoButton>
-      <Cart onPress={() => handleCartNavigation()}>
-        <Icon name="shopping-cart" size={26} color="#fff" />
-        <CartAmount>
-          <AmountText>{cartSize}</AmountText>
-        </CartAmount>
-      </Cart>
-    </Container>
+    <SafeAreaView
+      style={{
+        flex: 1,
+        backgroundColor: '#141419',
+      }}
+    >
+      <Container>
+        <LogoButton onPress={() => handleHomeNavigation()}>
+          <Logo source={logo} />
+        </LogoButton>
+        <Cart onPress={() => handleCartNavigation()}>
+          <Icon name="shopping-cart" size={26} color="#fff" />
+          {cartSize ? (
+            <CartAmount>
+              <AmountText>{cartSize}</AmountText>
+            </CartAmount>
+          ) : (
+            <></>
+          )}
+        </Cart>
+      </Container>
+    </SafeAreaView>
   );
 }
 
